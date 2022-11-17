@@ -1,8 +1,7 @@
 <script setup>
 import { ref, onMounted } from 'vue';
 
-    let username = ref('');
-    let texts = ref('');
+    let users = ref([]);
 
     //onmounted
     onMounted (() => {
@@ -12,17 +11,17 @@ import { ref, onMounted } from 'vue';
         .then(response => response.json())
         .then (data => {
             console.log(data);
-            username.value = data[0].user;
-            texts.value = data[0].text;
+            users.value = data;
+
         })
 
     });
 </script>
 
 <template>
-  <div class="video_comments">
-    <h3 v-for="{ user } in username">{{username}}</h3>
-    <p v-for="{ text } in texts">{{texts}}</p>
+  <div v-for="user in users" class="video_comments">
+    <h3 >{{user.user}}</h3>
+    <h2 >{{user.text}}</h2>
   </div>
 </template>
 
