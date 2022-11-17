@@ -1,8 +1,8 @@
 <script setup>
-import { ref, onMounted } from 'vue';
+import { ref, reactive, onMounted } from 'vue';
 
     let users = ref([]);
-
+    let text = reactive("")
     //onmounted
     onMounted (() => {
         const api = 'https://lab5-p379.onrender.com/api/v1/messages/';
@@ -14,19 +14,35 @@ import { ref, onMounted } from 'vue';
             users.value = data;
 
         })
+    const addcomment = () => {
+      text.push(users.value)
+      console.log("text")
+    }
 
     });
 </script>
 
 <template>
-  <div v-for="user in users" class="video_comments">
-    <h3 >{{user.user}}</h3>
-    <h2 >{{user.text}}</h2>
+  <div>
+    <div v-for="user in users" class="video_comments">
+      <h3 >{{user.user}}</h3>
+      <h2 >{{user.text}}</h2>
+    </div>
+    <div class="video_comments">
+      <input v-model="text" type="text" placeholder="Enter your comment">
+      <button @click="addcomment">Add Comment</button>
+    </div>
   </div>
 </template>
 
 <style scoped>
 .video_comments {
-  padding:0 1rem;
+  padding:0 0;
+}
+.video_comments h3 {
+  font-size: 12px;
+}
+.video_comments h2 {
+  font-size: 10px;
 }
 </style>
