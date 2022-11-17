@@ -12,8 +12,8 @@ import { ref, onMounted } from 'vue';
         .then(response => response.json())
         .then (data => {
             console.log(data);
-            username.value = data.videos[0].user;
-            text.value = data.videos[0].text;
+            username.value = data[0].user;
+            text.value = data[0].text;
         })
 
     });
