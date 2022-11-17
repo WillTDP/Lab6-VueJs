@@ -2,7 +2,7 @@
 import { ref, onMounted } from 'vue';
 
     let username = ref('');
-    let text = ref('');
+    let texts = ref('');
 
     //onmounted
     onMounted (() => {
@@ -13,7 +13,7 @@ import { ref, onMounted } from 'vue';
         .then (data => {
             console.log(data);
             username.value = data[0].user;
-            text.value = data[0].text;
+            texts.value = data[0].text;
         })
 
     });
@@ -21,8 +21,8 @@ import { ref, onMounted } from 'vue';
 
 <template>
   <div class="video_comments">
-    <h3>{{username}}</h3>
-    <p>{{text}}</p>
+    <h3 v-for="{ user } in username">{{username}}</h3>
+    <p v-for="{ text } in texts">{{texts}}</p>
   </div>
 </template>
 
