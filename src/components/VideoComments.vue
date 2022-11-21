@@ -2,7 +2,7 @@
 import { ref, reactive, onMounted } from 'vue';
 
     let users = ref([]);
-    let texts = reactive([]);
+    let texts = ref("");
     //onmounted
     onMounted (() => {
         const api = 'https://lab5-p379.onrender.com/api/v1/messages/';
@@ -16,18 +16,16 @@ import { ref, reactive, onMounted } from 'vue';
         })
     });
     function addcomment() {
-      const requestOptions = {
+      fetch('https://lab5-p379.onrender.com/api/v1/messages/', {
       method: "POST",
       headers: { "Content-Type": "text" },
       body: JSON.stringify({ title: texts, user: "WillTDP" })
-    };
-      texts.push(users.value)
-      .fetch(api, requestOptions)
+    })
         .then(response => response.json())
-        .then(data => (this.text = data.text));
-        console.log("text")
+        .then(title => (title.texts));
+        console.log(JSON)
 
-    }
+    };
 </script>
 
 <template>
