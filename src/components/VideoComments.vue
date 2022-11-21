@@ -29,10 +29,15 @@ import { ref, reactive, onMounted } from 'vue';
 </script>
 
 <template>
-  <div>
-    <div v-for="user in users" class="video_comments">
-      <h3 >{{user.user}}</h3>
-      <h2 >{{user.text}}</h2>
+  <div class="thing">
+    <div class="video_comments">
+      <h1>Comments</h1>
+    </div>
+    <div class="comment_box">
+      <div v-for="user in users" class="video_comments">
+          <h3 >{{user.user}}</h3>
+          <h2 >{{user.text}}</h2>
+      </div>
     </div>
     <div class="video_comments">
       <input v-model="texts" type="text" placeholder="Enter your comment">
@@ -42,13 +47,28 @@ import { ref, reactive, onMounted } from 'vue';
 </template>
 
 <style scoped>
+.thing {
+  position: relative;
+  left: 1280px;
+  bottom: 2100px;
+}
 .video_comments {
   padding:0 0;
+}
+.comment_box {
+  overflow: scroll;
+  overscroll-behavior-y: contain;
+  scroll-snap-type: y proximity;
+  max-height: 550px;
+  width: 350px;
 }
 .video_comments h3 {
   font-size: 12px;
 }
 .video_comments h2 {
   font-size: 10px;
+}
+.video_comments h1 {
+  font-size: 20px;
 }
 </style>
