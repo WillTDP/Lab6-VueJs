@@ -18,13 +18,13 @@ import { ref, reactive, onMounted } from 'vue';
     function addcomment() {
       fetch('https://lab5-p379.onrender.com/api/v1/messages/', {
       method: "POST",
-      headers: { "Content-Type": "text" },
-      body: JSON.stringify({ title: texts, user: "WillTDP" })
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ text: texts._value, user: "WillTDP" })
     })
         .then(response => response.json())
         .then(title => (title.texts));
         console.log(JSON)
-
+        users.value.push({text: texts._value, user: "WillTDP" })
     };
 </script>
 
