@@ -2,7 +2,7 @@
 import { ref, reactive, onMounted } from 'vue';
 
     let users = ref([]);
-    let text = reactive("")
+    let texts = reactive([]);
     //onmounted
     onMounted (() => {
         const api = 'https://lab5-p379.onrender.com/api/v1/messages/';
@@ -14,12 +14,20 @@ import { ref, reactive, onMounted } from 'vue';
             users.value = data;
 
         })
-    const addcomment = () => {
-      text.push(users.value)
-      console.log("text")
-    }
-
     });
+    function addcomment() {
+      const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "text" },
+      body: JSON.stringify({ title: texts, user: "WillTDP" })
+    };
+      texts.push(users.value)
+      .fetch(api, requestOptions)
+        .then(response => response.json())
+        .then(data => (this.text = data.text));
+        console.log("text")
+
+    }
 </script>
 
 <template>
@@ -29,7 +37,7 @@ import { ref, reactive, onMounted } from 'vue';
       <h2 >{{user.text}}</h2>
     </div>
     <div class="video_comments">
-      <input v-model="text" type="text" placeholder="Enter your comment">
+      <input v-model="texts" type="text" placeholder="Enter your comment">
       <button @click="addcomment">Add Comment</button>
     </div>
   </div>
