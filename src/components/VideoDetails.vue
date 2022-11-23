@@ -6,8 +6,8 @@ import { ref, onMounted } from 'vue';
 
     //onmounted
     onMounted (() => {
-        const api = 'http://127.0.0.1:5173/toktik.json';
-        //const api = 'https://app.fakejson.com/q/Dt6soyE2?token=J8LA1-xpV4FBoiU5vS0n4Q';
+        //const api = 'http://127.0.0.1:5173/toktik.json';
+        const api = 'https://app.fakejson.com/q/Dt6soyE2?token=J8LA1-xpV4FBoiU5vS0n4Q';
         fetch(api)
         .then(response => response.json())
         .then (data => {
