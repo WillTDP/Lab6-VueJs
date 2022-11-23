@@ -49,8 +49,8 @@ import { ref, reactive, onMounted } from 'vue';
 <style scoped>
 .thing {
   position: relative;
-  left: 1280px;
-  bottom: 2100px;
+  left: 1030px;
+  bottom: 1700px;
 }
 .video_comments {
   padding:0 0;
