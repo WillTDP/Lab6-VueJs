@@ -48,12 +48,7 @@ import { ref, reactive, onMounted } from 'vue';
 
 <style scoped>
 .thing {
-  position: relative;
-  left: 1030px;
-  bottom: 1700px;
-}
-.video_comments {
-  padding:0 0;
+  padding:0 1rem;
 }
 .comment_box {
   overflow: scroll;
